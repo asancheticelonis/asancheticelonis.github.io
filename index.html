@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Wings App</title>
-    <!-- Tailwind CSS CDN - Not recommended for production, but convenient for single file demos -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- React and ReactDOM CDNs -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <!-- Babel for in-browser JSX transformation - VERY IMPORTANT for this setup -->
+    <!-- Babel for in-browser JSX transformation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Basic Spinner CSS for loading state */
         .spinner {
@@ -32,32 +34,6 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // --- Mock Lucide Icons ---
-        // Since direct 'import { Icon } from "lucide-react";' won't work in a single HTML file
-        // without a build process, we're providing simple SVG placeholder functions for the icons
-        // used in the application. In a standard React project, you would install and import
-        // lucide-react normally.
-        const MockIcon = ({ size = 24, className = '', children }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                {children}
-            </svg>
-        );
-
-        const Leaf = (props) => <MockIcon {...props}><path d="M11 20A7 7 0 0 1 9.86 6.76C4.65 6.53 2 11.23 2 13a6 6 0 0 0 12 0c0-1.23-.5-2.23-1.4-3.14"></path><path d="M15 16s4.5-2.5 7-7c-2.5-4.5-7-7-7-7-2.9-1.3-4.9-3.3-6.1-5.6"></path></MockIcon>;
-        const Plane = (props) => <MockIcon {...props}><path d="M17.8 19.2 16 11.2V9l3-3 2 2-3 3h3l2 2v1.5L18.8 22H4.2L2 19.2l1.5-1.5L6 17v-3l2-2h2l1 1h4.2l1.6 1.6 1.4 1.4Z"></path><path d="M9 11l-3 3"></path><path d="M15 11l3 3"></path></MockIcon>;
-        const Train = (props) => <MockIcon {...props}><path d="M2 17h20"></path><path d="M14 10V6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path><path d="M18 10h4"></path><path d="M2 10h4"></path><path d="M7 17l-3 4"></path><path d="M17 17l3 4"></path><path d="M10 17l-3 4"></path><path d="M14 17l3 4"></path></MockIcon>;
-        const Car = (props) => <MockIcon {...props}><path d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2z"></path><circle cx="7" cy="13" r="1.5"></circle><circle cx="17" cy="13" r="1.5"></circle></MockIcon>;
-        const Star = (props) => <MockIcon {...props}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></MockIcon>;
-        const Trophy = (props) => <MockIcon {...props}><path d="M12 12H7.5V6H12v6Z"></path><path d="M12 12h4.5v6H12v-6Z"></path><path d="M12 12V2H4v10a4 4 0 0 0 4 4h4Z"></path><path d="M12 12V2h8v10a4 4 0 0 1-4 4h-4Z"></path><path d="M4 18h16"></path><path d="M5 22h14"></path></MockIcon>;
-        const BarChart = (props) => <MockIcon {...props}><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></MockIcon>;
-        const User = (props) => <MockIcon {...props}><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></MockIcon>;
-        const LogOut = (props) => <MockIcon {...props}><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="17 16 22 12 17 8"></polyline><line x1="22" y1="12" x2="10" y2="12"></line></MockIcon>;
-        const ChevronDown = (props) => <MockIcon {...props}><polyline points="6 9 12 15 18 9"></polyline></MockIcon>;
-        const ChevronUp = (props) => <MockIcon {...props}><polyline points="18 15 12 9 6 15"></polyline></MockIcon>;
-        const CheckCircle = (props) => <MockIcon {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></MockIcon>;
-        const PlusCircle = (props) => <MockIcon {...props}><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></MockIcon>;
-        const CalendarDays = (props) => <MockIcon {...props}><path d="M8 2v4"></path><path d="M16 2v4"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M16 14h.01"></path><path d="M12 18h.01"></path></MockIcon>;
-
         const { useState, useEffect, createContext, useContext } = React;
 
         // --- Context for State Management ---
@@ -173,27 +149,25 @@
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                   <div className="flex items-center">
-                    <Leaf className="h-8 w-8 text-green-600" />
-                    <h1 className="text-xl sm:text-2xl font-bold text-gray-800 ml-2">Green Wings</h1>
+                    <i className="fas fa-leaf text-green-600 text-2xl"></i> {/* Font Awesome Leaf icon */}
+                    <h1 className="text-xl sm:text-2xl font-bold text-gray-800 ml-2 my-0">Green Wings</h1>
                   </div>
                   <div className="hidden md:flex items-center space-x-4">
                     <div className="flex items-center">
-                      <Leaf className="h-5 w-5 text-green-500 mr-1" />
+                      <i className="fas fa-leaf text-green-500 text-base mr-1"></i> {/* Font Awesome Leaf icon */}
                       <span className="font-semibold text-green-600">{user.greenPoints} Points</span>
                     </div>
                     <div className="flex items-center">
-                      <User className="h-5 w-5 text-gray-500 mr-1" />
+                      <i className="fas fa-user text-gray-500 text-base mr-1"></i> {/* Font Awesome User icon */}
                       <span className="font-medium">{user.name}</span>
                     </div>
                     <button className="flex items-center text-gray-500 hover:text-gray-700">
-                      <LogOut className="h-5 w-5" />
+                      <i className="fas fa-right-from-bracket text-base"></i> {/* Font Awesome Log Out icon */}
                     </button>
                   </div>
                   <div className="md:hidden">
                     <button onClick={onMenuToggle} className="text-gray-500 hover:text-gray-700">
-                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
+                      <i className="fas fa-bars text-xl"></i> {/* Font Awesome Hamburger icon */}
                     </button>
                   </div>
                 </div>
@@ -203,7 +177,7 @@
         }
 
         function Sidebar({ navigate, currentPage, isMobileMenuOpen }) {
-          const NavItem = ({ icon, label, pageName }) => (
+          const NavItem = ({ iconClass, label, pageName }) => (
             <button
               onClick={() => navigate(pageName)}
               className={`flex items-center w-full px-4 py-3 text-left text-sm font-medium rounded-lg transition-colors duration-150 ${
@@ -212,7 +186,7 @@
                   : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
               }`}
             >
-              {icon}
+              <i className={`${iconClass} text-xl w-5`}></i> {/* Font Awesome icon */}
               <span className="ml-3">{label}</span>
             </button>
           );
@@ -221,10 +195,10 @@
             <>
               <aside className={`fixed md:relative z-10 md:z-auto bg-white md:bg-transparent w-64 md:w-56 flex-shrink-0 p-4 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
                 <nav className="space-y-2">
-                  <NavItem icon={<BarChart size={20} />} label="Dashboard" pageName="dashboard" />
-                  <NavItem icon={<PlusCircle size={20} />} label="Log a Trip" pageName="log" />
-                  <NavItem icon={<Trophy size={20} />} label="Leaderboard" pageName="leaderboard" />
-                  <NavItem icon={<User size={20} />} label="Profile" pageName="profile" />
+                  <NavItem iconClass="fas fa-chart-bar" label="Dashboard" pageName="dashboard" />
+                  <NavItem iconClass="fas fa-plus-circle" label="Log a Trip" pageName="log" />
+                  <NavItem iconClass="fas fa-trophy" label="Leaderboard" pageName="leaderboard" />
+                  <NavItem iconClass="fas fa-user" label="Profile" pageName="profile" />
                 </nav>
               </aside>
               {isMobileMenuOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden" onClick={() => navigate(currentPage)}></div>}
@@ -241,7 +215,7 @@
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card>
                   <CardHeader>
-                    <Leaf className="text-green-500" />
+                    <i className="fas fa-leaf text-green-500 text-xl"></i> {/* Font Awesome Leaf icon */}
                     <CardTitle>Total Emissions Saved</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -251,7 +225,7 @@
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CheckCircle className="text-blue-500" />
+                    <i className="fas fa-circle-check text-blue-500 text-xl"></i> {/* Font Awesome Check Circle icon */}
                     <CardTitle>Sustainable Trips</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -261,7 +235,7 @@
                 </Card>
                 <Card>
                    <CardHeader>
-                    <Trophy className="text-yellow-500" />
+                    <i className="fas fa-trophy text-yellow-500 text-xl"></i> {/* Font Awesome Trophy icon */}
                     <CardTitle>Top Performer</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -272,7 +246,7 @@
               </div>
               <Card>
                 <CardHeader>
-                  <BarChart className="text-purple-500" />
+                  <i className="fas fa-chart-bar text-purple-500 text-xl"></i> {/* Font Awesome Bar Chart icon */}
                   <CardTitle>Emissions by Travel Mode (%)</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -547,9 +521,9 @@
                                     ) : (
                                         <>
                                             {mode === 'Plane' && calculatedEmissions === null ? (
-                                                <> <Leaf className="mr-2" /> Calculate Emissions </>
+                                                <> <i className="fas fa-leaf mr-2"></i> Calculate Emissions </>
                                             ) : (
-                                                <> <PlusCircle className="mr-2" /> Log Trip </>
+                                                <> <i className="fas fa-plus-circle mr-2"></i> Log Trip </>
                                             )}
                                         </>
                                     )}
@@ -599,7 +573,7 @@
                           </div>
                         </div>
                         <div className="flex items-center font-bold text-green-600">
-                          <Leaf size={16} className="mr-1" />
+                          <i className="fas fa-leaf text-base mr-1"></i> {/* Font Awesome Leaf icon */}
                           {person.greenPoints.toLocaleString()}
                         </div>
                       </li>
@@ -621,19 +595,19 @@
                   <Card>
                     <CardContent className="flex flex-col items-center text-center p-6">
                       <div className="w-24 h-24 rounded-full bg-green-200 flex items-center justify-center mb-4">
-                        <User size={48} className="text-green-600" />
+                        <i className="fas fa-user text-green-600 text-5xl"></i> {/* Font Awesome User icon */}
                       </div>
                       <h3 className="text-2xl font-bold">{user.name}</h3>
                       <p className="text-gray-500">{user.team} Team</p>
                       <div className="mt-4 bg-green-100 text-green-800 font-bold py-2 px-4 rounded-full flex items-center">
-                        <Leaf size={16} className="mr-2" />
+                        <i className="fas fa-leaf text-base mr-2"></i> {/* Font Awesome Leaf icon */}
                         {user.greenPoints.toLocaleString()} Green Points
                       </div>
                     </CardContent>
                   </Card>
                   <Card>
                     <CardHeader>
-                      <Trophy className="text-yellow-500" />
+                      <i className="fas fa-trophy text-yellow-500 text-xl"></i> {/* Font Awesome Trophy icon */}
                       <CardTitle>My Badges</CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -648,7 +622,7 @@
                 <div className="lg:col-span-2">
                   <Card>
                     <CardHeader>
-                      <Plane className="text-blue-500" />
+                      <i className="fas fa-plane text-blue-500 text-xl"></i> {/* Font Awesome Plane icon */}
                       <CardTitle>My Travel History</CardTitle>
                     </CardHeader>
                     <CardContent>
